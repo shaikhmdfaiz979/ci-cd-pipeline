@@ -1,0 +1,22 @@
+{
+  "family": "node-app-tasks",
+  "networkMode": "awsvpc",
+  "executionRoleArn": "arn:aws:iam::559050236729:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "node-web-app",
+      "image": "559050236729.dkr.ecr.us-east-1.amazonaws.com/dev/nodeimages:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 8080,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  ],
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024"
+}

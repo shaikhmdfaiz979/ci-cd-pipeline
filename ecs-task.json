@@ -1,7 +1,8 @@
 {
   "family": "ci-cd-ecs",
   "networkMode": "awsvpc",
-  "executionRoleArn": "arn:aws:ecs:us-east-1:254771353010:cluster/ci-cd-ecs",
+  "executionRoleArn": "arn:aws:iam::254771353010:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::254771353010:role/ecsTaskRole",
   "containerDefinitions": [
     {
       "name": "ci-cd-task-service",
@@ -16,7 +17,9 @@
       ]
     }
   ],
-  "requiresCompatibilities": ["FARGATE"],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
   "cpu": "512",
   "memory": "1024"
 }

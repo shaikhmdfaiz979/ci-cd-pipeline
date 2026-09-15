@@ -33,7 +33,7 @@ jobs:
       - name: Revisions on ECS with Updated Docker Images
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
-          task-definition: ci-cd-task.json
+          task-definition: ecs-task.json
           service: dev/ci-cd
           cluster: ci-cd-ecs
           wait-for-service-stability: true        

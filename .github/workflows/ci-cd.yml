@@ -13,7 +13,7 @@ jobs:
 
       - name: Build the Docker Image
         run: |
-         docker build . --tag dev/ci-cd:latest 254771353010.dkr.ecr.us-east-1.amazonaws.com/dev/ci-cd:latest
+         docker build . --tag 254771353010.dkr.ecr.us-east-1.amazonaws.com/dev/ci-cd:latest
          
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2

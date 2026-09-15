@@ -35,5 +35,5 @@ jobs:
         with:
           task-definition: ci-cd-task.json
           service: dev/ci-cd
-          cluster: ci-cd
+          cluster: ci-cd-ecs
           wait-for-service-stability: true        

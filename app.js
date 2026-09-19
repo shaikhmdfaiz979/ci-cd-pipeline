@@ -21,6 +21,6 @@ router.get('/sharks', function(req,res){
 app.use(express.static(path));
 app.use('/', router);
 
-app.listen(port, function () {
+app.listen(port, '0.0.0.0', function () {
   console.log('The app is listening on port 8080!')
 })

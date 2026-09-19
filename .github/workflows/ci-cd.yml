@@ -13,7 +13,7 @@ jobs:
 
       - name: Build the Docker Image
         run: |
-         docker build . --tag 254771353010.dkr.ecr.us-east-1.amazonaws.com/dev/ci-cd:latest
+         docker build . --tag 254771353010.dkr.ecr.us-east-1.amazonaws.com/ci-cd-pipeline:latest
          
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
@@ -28,12 +28,12 @@ jobs:
 
       - name: Push the Image to AWS ECR
         run: |
-           docker push 254771353010.dkr.ecr.us-east-1.amazonaws.com/dev/ci-cd:latest
+           docker push 254771353010.dkr.ecr.us-east-1.amazonaws.com/ci-cd-pipeline:latest
 
       - name: Revisions on ECS with Updated Docker Images
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ecs-task.json
           service: ci-cd-task-service
-          cluster: ci-cd-ecs
+          cluster: ci-cd-cluster
           wait-for-service-stability: true        

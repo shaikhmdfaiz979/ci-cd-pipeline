@@ -1,12 +1,12 @@
 {
-  "family": "ci-cd-ecs",
+  "family": "ci-cd-task",
   "networkMode": "awsvpc",
   "executionRoleArn": "arn:aws:iam::254771353010:role/ecsTaskExecutionRole",
   "taskRoleArn": "arn:aws:iam::254771353010:role/ecsTaskRole",
   "containerDefinitions": [
     {
       "name": "ci-cd-task-service",
-      "image": "254771353010.dkr.ecr.us-east-1.amazonaws.com/dev/ci-cd:latest",
+      "image": "254771353010.dkr.ecr.us-east-1.amazonaws.com/ci-cd-pipeline:latest",
       "essential": true,
       "portMappings": [
         {

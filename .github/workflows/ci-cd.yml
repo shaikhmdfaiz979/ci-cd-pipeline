@@ -1,39 +1,56 @@
 name: Build and Deploy NodeJS App on AWS
+
 on:
   push:
     branches:
-    - main
-  
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  AWS_REGION: us-east-1
+  ECR_REPOSITORY: ci-cd-pipeline
+  ECS_CLUSTER: ci-cd-cluster
+  ECS_SERVICE: ci-cd-service
+
 jobs:
   Build-App:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v5    
+      - name: Checkout source code
+        uses: actions/checkout@v5
 
-      - name: Build the Docker Image
-        run: |
-         docker build . --tag 254771353010.dkr.ecr.us-east-1.amazonaws.com/ci-cd-pipeline:latest
-         
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1 
+          role-to-assume: arn:aws:iam::254771353010:role/GitHubActionsECSDeployRole
+          aws-region: ${{ env.AWS_REGION }}
 
-      - name: Login to Amazon Elastic Container Registry
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
+      - name: Login to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Push the Image to AWS ECR
+      - name: Build Docker Image
         run: |
-           docker push 254771353010.dkr.ecr.us-east-1.amazonaws.com/ci-cd-pipeline:latest
+          docker build \
+            -t 254771353010.dkr.ecr.us-east-1.amazonaws.com/ci-cd-pipeline:latest .
 
-      - name: Revisions on ECS with Updated Docker Images
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-        with:
-          task-definition: ecs-task.json
-          service: ci-cd-task-service
-          cluster: ci-cd-cluster
-          wait-for-service-stability: true        
+      - name: Push Docker Image to ECR
+        run: |
+          docker push \
+            254771353010.dkr.ecr.us-east-1.amazonaws.com/ci-cd-pipeline:latest
+
+      - name: Deploy Updated Image to ECS
+        run: |
+          aws ecs update-service \
+            --cluster "$ECS_CLUSTER" \
+            --service "$ECS_SERVICE" \
+            --force-new-deployment
+
+      - name: Wait for ECS Service Stability
+        run: |
+          aws ecs wait services-stable \
+            --cluster "$ECS_CLUSTER" \
+            --services "$ECS_SERVICE"

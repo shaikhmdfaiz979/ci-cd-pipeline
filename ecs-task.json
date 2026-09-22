@@ -5,7 +5,7 @@
   "taskRoleArn": "arn:aws:iam::254771353010:role/ecsTaskRole",
   "containerDefinitions": [
     {
-      "name": "ci-cd-task-service",
+      "name": "ci-cd-service",
       "image": "254771353010.dkr.ecr.us-east-1.amazonaws.com/ci-cd-pipeline:latest",
       "essential": true,
       "portMappings": [

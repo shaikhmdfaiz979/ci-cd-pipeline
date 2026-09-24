@@ -1,54 +1,305 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
-    <title>Node App Deployment on AWS ECS</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="css/styles.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>DevOpsCloud | CI/CD Project</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+```
+
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark navbar-static-top navbar-expand-md">
-        <div class="container">
-            <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span>
-            </button> <a class="navbar-brand" href="#">NodeApp from DigitalOcean</a>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav mr-auto">
-                    <li class="active nav-item"><a href="/" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item"><a href="/sharks" class="nav-link">Sharks</a>
-                    </li>
-                </ul>
-            </div>
+
+```
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="nav-container">
+
+        <a href="/" class="logo">
+            <span class="logo-icon">☁</span>
+            DevOps<span>Cloud</span>
+        </a>
+
+        <nav>
+            <a href="/" class="active">Home</a>
+            <a href="/sharks">Sharks</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            🚀 AWS ECS • Docker • GitHub Actions
         </div>
-    </nav>
-    <div class="jumbotron">
-        <div class="container">
-            <h1>❕ Welcome to My first CI/CD Web ❕</h1></br></br>
-            <h1>❕ Hi Faiz and Fardeen ❕</h1>
-            <br>
-            <p><a class="btn btn-primary btn-lg" href="/sharks" role="button">Find More Info Here</a>
+
+        <h1>
+            Welcome to My
+            <span>CI/CD Web Project</span>
+        </h1>
+
+        <p>
+            A modern Node.js application deployed using
+            Docker, Amazon ECR, Amazon ECS and GitHub Actions.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="/sharks" class="btn btn-primary">
+                Explore Project →
+            </a>
+
+            <a href="#about" class="btn btn-secondary">
+                Learn More
+            </a>
+
+        </div>
+
+        <div class="names">
+            👋 Hi <strong>Faiz</strong> & <strong>Fardeen</strong>
+        </div>
+
+    </div>
+
+
+    <!-- TERMINAL CARD -->
+    <div class="hero-card">
+
+        <div class="terminal-header">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="terminal-body">
+
+            <p><span class="green">$</span> git push origin main</p>
+
+            <p>
+                <span class="blue">✓</span>
+                GitHub Actions started
+            </p>
+
+            <p>
+                <span class="blue">✓</span>
+                Docker image built
+            </p>
+
+            <p>
+                <span class="blue">✓</span>
+                Image pushed to ECR
+            </p>
+
+            <p>
+                <span class="blue">✓</span>
+                ECS deployment successful
+            </p>
+
+            <p class="success">
+                🚀 Application is LIVE!
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TECHNOLOGY STACK -->
+<section class="technologies">
+
+    <div class="section-title">
+
+        <span>TECHNOLOGY STACK</span>
+
+        <h2>Built With Modern DevOps Tools</h2>
+
+        <p>
+            This project demonstrates a complete containerized
+            CI/CD deployment workflow.
+        </p>
+
+    </div>
+
+
+    <div class="tech-grid">
+
+        <div class="tech-card">
+            <div class="tech-icon">🐙</div>
+            <h3>GitHub</h3>
+            <p>
+                Source code management and project version control.
             </p>
         </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <h3>DevOps is now for Everyone!</h3>
-                <p>If you are a Graduate, a Cloud Intern, a Development Intern, DevOps is a must-have skill now.
-                    Don't worry, DevOps Molvi has got your back!
-                </p>
-            </div>
-            <div class="col-lg-6">
-                <h3>Node App about Sharks</h3>
-                <p>There is evidence to suggest that sharks lived up to 400 million years ago.
-                </p>
-            </div>
+
+
+        <div class="tech-card">
+            <div class="tech-icon">⚙️</div>
+            <h3>GitHub Actions</h3>
+            <p>
+                Automated build, test and deployment pipeline.
+            </p>
         </div>
+
+
+        <div class="tech-card">
+            <div class="tech-icon">🐳</div>
+            <h3>Docker</h3>
+            <p>
+                Containerized Node.js application.
+            </p>
+        </div>
+
+
+        <div class="tech-card">
+            <div class="tech-icon">📦</div>
+            <h3>Amazon ECR</h3>
+            <p>
+                Secure storage for Docker container images.
+            </p>
+        </div>
+
+
+        <div class="tech-card">
+            <div class="tech-icon">☁️</div>
+            <h3>Amazon ECS</h3>
+            <p>
+                Runs the application using AWS Fargate.
+            </p>
+        </div>
+
+
+        <div class="tech-card">
+            <div class="tech-icon">🌐</div>
+            <h3>Load Balancer</h3>
+            <p>
+                Routes incoming traffic to the application.
+            </p>
+        </div>
+
     </div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+    <div class="about-content">
+
+        <div>
+
+            <span class="section-label">
+                ABOUT THE PROJECT
+            </span>
+
+            <h2>
+                DevOps is for Everyone
+            </h2>
+
+            <p>
+                DevOps combines development and operations to
+                create faster, reliable and automated software
+                delivery.
+            </p>
+
+            <p>
+                This project demonstrates how a Node.js application
+                can move from a GitHub repository to a running
+                container on AWS ECS using an automated CI/CD pipeline.
+            </p>
+
+            <a href="/sharks" class="text-link">
+                Explore the Sharks Page →
+            </a>
+
+        </div>
+
+
+        <div class="about-box">
+
+            <div class="stat">
+                <strong>01</strong>
+                <span>GitHub Repository</span>
+            </div>
+
+            <div class="stat">
+                <strong>02</strong>
+                <span>Docker Container</span>
+            </div>
+
+            <div class="stat">
+                <strong>03</strong>
+                <span>Amazon ECR</span>
+            </div>
+
+            <div class="stat">
+                <strong>04</strong>
+                <span>Amazon ECS</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <h3>
+                DevOps<span>Cloud</span>
+            </h3>
+
+            <p>
+                A simple CI/CD deployment project powered by AWS.
+            </p>
+
+        </div>
+
+
+        <div class="footer-right">
+
+            <p>
+                Built with ❤️ by Faiz & Fardeen
+            </p>
+
+            <p>
+                Node.js • Docker • AWS • GitHub Actions
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+        © 2026 DevOpsCloud. CI/CD Demo Project.
+    </div>
+
+</footer>
+```
+
 </body>
 
 </html>

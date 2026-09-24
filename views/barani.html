@@ -1,48 +1,301 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
-    <title>Node App Deployment on ECS</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="css/styles.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css">
-</head>
-<nav class="navbar navbar-dark bg-dark navbar-static-top navbar-expand-md">
-    <div class="container">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span>
-        </button> <a class="navbar-brand" href="/">CICD Pipeline Demo on GitHub Actions</a>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav mr-auto">
-                <li class="nav-item"><a href="/" class="nav-link">Home</a>
-                </li>
-                <li class="active nav-item"><a href="/sharks" class="nav-link">Sharks</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<div class="jumbotron text-center">
-    <h1>Subscribe DevOps Molvi on YouTube</h1>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-6">
-            <p>
-                <div class="caption">A very dangerous shark for humans.
-                </div>
-                <img src="https://assets.digitalocean.com/articles/docker_node_image/sawshark.jpg" alt="Sawshark">
-            </p>
-        </div>
-        <div class="col-lg-6">
-            <p>
-                <div class="caption">This Shark seems to be funny and friendly!</div>
-                <img src="https://assets.digitalocean.com/articles/docker_node_image/sammy.png" alt="Sammy the Shark">
-            </p>
-        </div>
-    </div>
-</div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    
+```
+<title>Sharks | DevOpsCloud</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+```
+
+</head>
+
+<body>
+
+```
+<!-- NAVBAR -->
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a href="/" class="logo">
+            <span class="logo-icon">☁</span>
+            DevOps<span>Cloud</span>
+        </a>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/sharks" class="active">Sharks</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- SHARK HERO -->
+<section class="shark-hero">
+
+    <div class="shark-hero-content">
+
+        <div class="badge">
+            🦈 SHARK COLLECTION
+        </div>
+
+        <h1>
+            Explore the
+            <span>Shark World</span>
+        </h1>
+
+        <p>
+            Welcome to the second page of our CI/CD demo application.
+            Explore some interesting and powerful sharks below.
+        </p>
+
+        <a href="/" class="btn btn-primary">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- SHARK COLLECTION -->
+<section class="sharks-section">
+
+    <div class="section-title">
+
+        <span>MARINE WORLD</span>
+
+        <h2>Meet the Sharks</h2>
+
+        <p>
+            Powerful creatures with millions of years of history.
+        </p>
+
+    </div>
+
+
+    <div class="shark-grid">
+
+
+        <!-- SAWSHARK -->
+        <article class="shark-card">
+
+            <div class="shark-image">
+
+                <img
+                    src="https://assets.digitalocean.com/articles/docker_node_image/sawshark.jpg"
+                    alt="Sawshark">
+
+            </div>
+
+
+            <div class="shark-content">
+
+                <div class="shark-number">
+                    01
+                </div>
+
+                <h3>
+                    Sawshark
+                </h3>
+
+                <p>
+                    The sawshark is a unique-looking shark known for
+                    its long, saw-like snout. Its appearance makes it
+                    one of the most interesting sharks in the ocean.
+                </p>
+
+                <span class="shark-tag">
+                    🌊 Ocean Predator
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- SAMMY -->
+        <article class="shark-card">
+
+            <div class="shark-image">
+
+                <img
+                    src="https://assets.digitalocean.com/articles/docker_node_image/sammy.png"
+                    alt="Sammy the Shark">
+
+            </div>
+
+
+            <div class="shark-content">
+
+                <div class="shark-number">
+                    02
+                </div>
+
+                <h3>
+                    Sammy the Shark
+                </h3>
+
+                <p>
+                    Sammy is the friendly face of this demo project.
+                    This page is part of our Node.js application
+                    deployed through a modern CI/CD pipeline.
+                </p>
+
+                <span class="shark-tag">
+                    🦈 Friendly Shark
+                </span>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- DEPLOYMENT -->
+<section class="deployment-section">
+
+    <div class="deployment-box">
+
+        <div>
+
+            <span class="section-label">
+                DEPLOYMENT
+            </span>
+
+            <h2>
+                This page was deployed through CI/CD.
+            </h2>
+
+            <p>
+                Code changes can be pushed to GitHub and automatically
+                built into a Docker image, pushed to Amazon ECR and
+                deployed to Amazon ECS.
+            </p>
+
+        </div>
+
+
+        <div class="pipeline">
+
+            <div class="pipeline-step">
+
+                <span>01</span>
+
+                <strong>
+                    GitHub
+                </strong>
+
+            </div>
+
+
+            <div class="pipeline-arrow">
+                →
+            </div>
+
+
+            <div class="pipeline-step">
+
+                <span>02</span>
+
+                <strong>
+                    Actions
+                </strong>
+
+            </div>
+
+
+            <div class="pipeline-arrow">
+                →
+            </div>
+
+
+            <div class="pipeline-step">
+
+                <span>03</span>
+
+                <strong>
+                    Docker
+                </strong>
+
+            </div>
+
+
+            <div class="pipeline-arrow">
+                →
+            </div>
+
+
+            <div class="pipeline-step">
+
+                <span>04</span>
+
+                <strong>
+                    AWS ECS
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <h3>
+                DevOps<span>Cloud</span>
+            </h3>
+
+            <p>
+                A simple CI/CD deployment project powered by AWS.
+            </p>
+
+        </div>
+
+
+        <div class="footer-right">
+
+            <p>
+                Built with ❤️ by Faiz & Fardeen
+            </p>
+
+            <p>
+                Node.js • Docker • AWS • GitHub Actions
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+        © 2026 DevOpsCloud. CI/CD Demo Project.
+    </div>
+
+</footer>
+```
+
+</body>
+
 </html>

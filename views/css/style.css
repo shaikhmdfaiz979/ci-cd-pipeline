@@ -1,49 +1,1089 @@
-.navbar {
-    margin-bottom: 0;
+/* =========================================
+GLOBAL
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+html {
+scroll-behavior: smooth;
 }
 
 body {
-    background: #020A1B;
-    color: #ffffff;
-    font-family: 'Merriweather', sans-serif;
+font-family: "Inter", Arial, sans-serif;
+background: #07111f;
+color: #f8fafc;
+line-height: 1.6;
 }
 
-h1,
-h2 {
-    font-weight: bold;
+a {
+text-decoration: none;
+color: inherit;
 }
 
-p {
-    font-size: 16px;
-    color: #ffffff;
+img {
+max-width: 100%;
+display: block;
 }
 
-.jumbotron {
-    background: #0048CD;
-    color: white;
-    text-align: center;
+/* =========================================
+NAVBAR
+========================================= */
+
+.navbar {
+width: 100%;
+background: rgba(7, 17, 31, 0.96);
+border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+```
+position: sticky;
+top: 0;
+z-index: 1000;
+
+backdrop-filter: blur(12px);
+```
+
 }
 
-.jumbotron p {
-    color: white;
-    font-size: 26px;
+.nav-container {
+max-width: 1150px;
+margin: auto;
+padding: 18px 25px;
+
+```
+display: flex;
+align-items: center;
+justify-content: space-between;
+```
+
+}
+
+.logo {
+font-size: 22px;
+font-weight: 800;
+letter-spacing: -0.5px;
+}
+
+.logo span {
+color: #38bdf8;
+}
+
+.logo-icon {
+margin-right: 6px;
+}
+
+nav {
+display: flex;
+gap: 30px;
+}
+
+nav a {
+color: #94a3b8;
+font-size: 15px;
+font-weight: 600;
+transition: 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+color: #38bdf8;
+}
+
+/* =========================================
+BUTTONS
+========================================= */
+
+.btn {
+display: inline-block;
+
+```
+padding: 14px 25px;
+
+border-radius: 9px;
+
+font-weight: 700;
+
+transition: 0.3s;
+```
+
 }
 
 .btn-primary {
-    color: #fff;
-    text-color: #000000;
-    border-color: white;
-    margin-bottom: 5px;
+background: #0ea5e9;
+color: white;
 }
 
-img,
-video,
-audio {
-    margin-top: 20px;
-    max-width: 80%;
+.btn-primary:hover {
+background: #0284c7;
+transform: translateY(-3px);
 }
 
-div.caption: {
-    float: left;
-    clear: both;
+.btn-secondary {
+border: 1px solid #334155;
+color: #e2e8f0;
+}
+
+.btn-secondary:hover {
+border-color: #38bdf8;
+color: #38bdf8;
+}
+
+/* =========================================
+BADGE
+========================================= */
+
+.badge {
+display: inline-block;
+
+```
+padding: 9px 16px;
+
+margin-bottom: 25px;
+
+border: 1px solid rgba(56, 189, 248, 0.3);
+
+border-radius: 30px;
+
+color: #7dd3fc;
+
+background: rgba(56, 189, 248, 0.08);
+
+font-size: 13px;
+
+font-weight: 600;
+```
+
+}
+
+/* =========================================
+HOME HERO
+========================================= */
+
+.hero {
+max-width: 1150px;
+
+```
+margin: auto;
+
+min-height: 680px;
+
+padding: 100px 25px;
+
+display: grid;
+
+grid-template-columns: 1.2fr 0.8fr;
+
+align-items: center;
+
+gap: 70px;
+```
+
+}
+
+.hero-content {
+max-width: 650px;
+}
+
+.hero h1 {
+font-size: clamp(45px, 6vw, 72px);
+
+```
+line-height: 1.05;
+
+letter-spacing: -3px;
+
+margin-bottom: 25px;
+```
+
+}
+
+.hero h1 span {
+display: block;
+
+```
+color: #38bdf8;
+```
+
+}
+
+.hero p {
+color: #94a3b8;
+
+```
+font-size: 18px;
+
+max-width: 600px;
+
+margin-bottom: 35px;
+```
+
+}
+
+.hero-buttons {
+display: flex;
+
+```
+gap: 15px;
+
+flex-wrap: wrap;
+```
+
+}
+
+.names {
+margin-top: 30px;
+
+```
+color: #64748b;
+
+font-size: 14px;
+```
+
+}
+
+.names strong {
+color: #cbd5e1;
+}
+
+/* =========================================
+TERMINAL
+========================================= */
+
+.hero-card {
+background: #0b1628;
+
+```
+border: 1px solid #1e3a5f;
+
+border-radius: 14px;
+
+overflow: hidden;
+
+box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.45),
+    0 0 40px rgba(14, 165, 233, 0.08);
+```
+
+}
+
+.terminal-header {
+height: 45px;
+
+```
+padding: 0 16px;
+
+background: #111c2e;
+
+display: flex;
+
+align-items: center;
+
+gap: 7px;
+```
+
+}
+
+.terminal-header span {
+width: 11px;
+
+```
+height: 11px;
+
+border-radius: 50%;
+
+background: #475569;
+```
+
+}
+
+.terminal-body {
+padding: 28px;
+
+```
+font-family: monospace;
+
+font-size: 14px;
+
+line-height: 2;
+
+color: #cbd5e1;
+```
+
+}
+
+.terminal-body p {
+margin: 0;
+}
+
+.green {
+color: #22c55e;
+}
+
+.blue {
+color: #38bdf8;
+}
+
+.success {
+color: #22c55e;
+
+```
+margin-top: 15px !important;
+```
+
+}
+
+/* =========================================
+TECHNOLOGY SECTION
+========================================= */
+
+.technologies {
+padding: 100px 25px;
+
+```
+background: #0b1628;
+```
+
+}
+
+.section-title {
+text-align: center;
+
+```
+max-width: 700px;
+
+margin: auto auto 55px;
+```
+
+}
+
+.section-title span,
+.section-label {
+color: #38bdf8;
+
+```
+font-size: 13px;
+
+font-weight: 800;
+
+letter-spacing: 2px;
+```
+
+}
+
+.section-title h2 {
+font-size: 40px;
+
+```
+margin: 12px 0;
+```
+
+}
+
+.section-title p {
+color: #94a3b8;
+}
+
+.tech-grid {
+max-width: 1150px;
+
+```
+margin: auto;
+
+display: grid;
+
+grid-template-columns: repeat(3, 1fr);
+
+gap: 20px;
+```
+
+}
+
+.tech-card {
+padding: 30px;
+
+```
+background: #101d31;
+
+border: 1px solid #1e293b;
+
+border-radius: 14px;
+
+transition: 0.3s;
+```
+
+}
+
+.tech-card:hover {
+transform: translateY(-7px);
+
+```
+border-color: #38bdf8;
+
+box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.25);
+```
+
+}
+
+.tech-icon {
+font-size: 32px;
+
+```
+margin-bottom: 18px;
+```
+
+}
+
+.tech-card h3 {
+margin-bottom: 8px;
+}
+
+.tech-card p {
+color: #94a3b8;
+
+```
+font-size: 14px;
+```
+
+}
+
+/* =========================================
+ABOUT
+========================================= */
+
+.about {
+padding: 110px 25px;
+}
+
+.about-content {
+max-width: 1150px;
+
+```
+margin: auto;
+
+display: grid;
+
+grid-template-columns: 1fr 1fr;
+
+gap: 80px;
+
+align-items: center;
+```
+
+}
+
+.about h2 {
+font-size: 42px;
+
+```
+margin: 12px 0 20px;
+```
+
+}
+
+.about p {
+color: #94a3b8;
+
+```
+margin-bottom: 18px;
+```
+
+}
+
+.text-link {
+display: inline-block;
+
+```
+margin-top: 10px;
+
+color: #38bdf8;
+
+font-weight: 700;
+```
+
+}
+
+.about-box {
+background: #0b1628;
+
+```
+border: 1px solid #1e293b;
+
+border-radius: 15px;
+
+padding: 15px;
+```
+
+}
+
+.stat {
+display: flex;
+
+```
+align-items: center;
+
+gap: 20px;
+
+padding: 22px;
+
+border-bottom: 1px solid #1e293b;
+```
+
+}
+
+.stat:last-child {
+border-bottom: none;
+}
+
+.stat strong {
+color: #38bdf8;
+
+```
+font-size: 25px;
+```
+
+}
+
+.stat span {
+color: #cbd5e1;
+}
+
+/* =========================================
+SHARK HERO
+========================================= */
+
+.shark-hero {
+min-height: 500px;
+
+```
+display: flex;
+
+align-items: center;
+
+background:
+    linear-gradient(
+        90deg,
+        rgba(7, 17, 31, 0.98),
+        rgba(7, 17, 31, 0.75),
+        rgba(7, 17, 31, 0.92)
+    ),
+    url("https://assets.digitalocean.com/articles/docker_node_image/sawshark.jpg");
+
+background-size: cover;
+
+background-position: center;
+
+border-bottom: 1px solid #1e293b;
+```
+
+}
+
+.shark-hero-content {
+max-width: 1150px;
+
+```
+width: 100%;
+
+margin: auto;
+
+padding: 80px 25px;
+```
+
+}
+
+.shark-hero h1 {
+font-size: clamp(45px, 6vw, 70px);
+
+```
+line-height: 1.05;
+
+letter-spacing: -3px;
+
+margin: 20px 0;
+```
+
+}
+
+.shark-hero h1 span {
+display: block;
+
+```
+color: #38bdf8;
+```
+
+}
+
+.shark-hero p {
+max-width: 600px;
+
+```
+color: #cbd5e1;
+
+font-size: 18px;
+
+margin-bottom: 30px;
+```
+
+}
+
+/* =========================================
+SHARK SECTION
+========================================= */
+
+.sharks-section {
+padding: 100px 25px;
+
+```
+background: #07111f;
+```
+
+}
+
+.shark-grid {
+max-width: 1000px;
+
+```
+margin: auto;
+
+display: grid;
+
+grid-template-columns: repeat(2, 1fr);
+
+gap: 30px;
+```
+
+}
+
+.shark-card {
+overflow: hidden;
+
+```
+background: #0b1628;
+
+border: 1px solid #1e293b;
+
+border-radius: 18px;
+
+transition: 0.35s;
+```
+
+}
+
+.shark-card:hover {
+transform: translateY(-8px);
+
+```
+border-color: #38bdf8;
+
+box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.35),
+    0 0 30px rgba(56, 189, 248, 0.08);
+```
+
+}
+
+.shark-image {
+height: 280px;
+
+```
+overflow: hidden;
+```
+
+}
+
+.shark-image img {
+width: 100%;
+
+```
+height: 100%;
+
+object-fit: cover;
+
+transition: 0.5s;
+```
+
+}
+
+.shark-card:hover .shark-image img {
+transform: scale(1.06);
+}
+
+.shark-content {
+padding: 28px;
+}
+
+.shark-number {
+color: #38bdf8;
+
+```
+font-size: 13px;
+
+font-weight: 800;
+
+letter-spacing: 2px;
+
+margin-bottom: 8px;
+```
+
+}
+
+.shark-content h3 {
+font-size: 25px;
+
+```
+margin-bottom: 12px;
+```
+
+}
+
+.shark-content p {
+color: #94a3b8;
+
+```
+font-size: 15px;
+
+margin-bottom: 22px;
+```
+
+}
+
+.shark-tag {
+display: inline-block;
+
+```
+padding: 7px 13px;
+
+border-radius: 20px;
+
+background: rgba(56, 189, 248, 0.08);
+
+border: 1px solid rgba(56, 189, 248, 0.2);
+
+color: #7dd3fc;
+
+font-size: 12px;
+
+font-weight: 700;
+```
+
+}
+
+/* =========================================
+DEPLOYMENT
+========================================= */
+
+.deployment-section {
+padding: 90px 25px;
+
+```
+background: #0b1628;
+```
+
+}
+
+.deployment-box {
+max-width: 1100px;
+
+```
+margin: auto;
+
+padding: 50px;
+
+border-radius: 18px;
+
+background: #101d31;
+
+border: 1px solid #1e293b;
+
+display: grid;
+
+grid-template-columns: 1fr 1fr;
+
+gap: 60px;
+
+align-items: center;
+```
+
+}
+
+.deployment-box h2 {
+font-size: 35px;
+
+```
+line-height: 1.2;
+
+margin: 12px 0 18px;
+```
+
+}
+
+.deployment-box p {
+color: #94a3b8;
+}
+
+/* =========================================
+PIPELINE
+========================================= */
+
+.pipeline {
+display: flex;
+
+```
+align-items: center;
+
+justify-content: center;
+
+flex-wrap: wrap;
+
+gap: 12px;
+```
+
+}
+
+.pipeline-step {
+min-width: 90px;
+
+```
+padding: 16px 12px;
+
+text-align: center;
+
+background: #0b1628;
+
+border: 1px solid #1e293b;
+
+border-radius: 10px;
+```
+
+}
+
+.pipeline-step span {
+display: block;
+
+```
+color: #38bdf8;
+
+font-size: 11px;
+
+margin-bottom: 5px;
+```
+
+}
+
+.pipeline-step strong {
+font-size: 13px;
+}
+
+.pipeline-arrow {
+color: #38bdf8;
+
+```
+font-size: 22px;
+```
+
+}
+
+/* =========================================
+FOOTER
+========================================= */
+
+footer {
+background: #040b14;
+
+```
+border-top: 1px solid #1e293b;
+
+padding: 55px 25px 25px;
+```
+
+}
+
+.footer-content {
+max-width: 1150px;
+
+```
+margin: auto;
+
+display: flex;
+
+justify-content: space-between;
+
+gap: 40px;
+```
+
+}
+
+footer h3 {
+font-size: 22px;
+}
+
+footer h3 span {
+color: #38bdf8;
+}
+
+footer p {
+color: #64748b;
+
+```
+font-size: 14px;
+```
+
+}
+
+.footer-right {
+text-align: right;
+}
+
+.copyright {
+max-width: 1150px;
+
+```
+margin: 40px auto 0;
+
+padding-top: 20px;
+
+border-top: 1px solid #1e293b;
+
+color: #475569;
+
+font-size: 13px;
+
+text-align: center;
+```
+
+}
+
+/* =========================================
+TABLET
+========================================= */
+
+@media (max-width: 850px) {
+
+```
+.hero {
+    grid-template-columns: 1fr;
+
+    padding-top: 70px;
+}
+
+.hero-card {
+    max-width: 600px;
+
+    width: 100%;
+}
+
+.tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.about-content {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+}
+
+.shark-grid {
+    grid-template-columns: 1fr;
+
+    max-width: 600px;
+}
+
+.deployment-box {
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+
+    padding: 35px;
+}
+
+.footer-content {
+    flex-direction: column;
+}
+
+.footer-right {
+    text-align: left;
+}
+```
+
+}
+
+/* =========================================
+MOBILE
+========================================= */
+
+@media (max-width: 550px) {
+
+```
+.nav-container {
+    padding: 15px 18px;
+}
+
+nav {
+    gap: 15px;
+}
+
+.hero {
+    padding: 60px 18px;
+}
+
+.hero h1 {
+    font-size: 45px;
+
+    letter-spacing: -2px;
+}
+
+.hero p {
+    font-size: 16px;
+}
+
+.tech-grid {
+    grid-template-columns: 1fr;
+}
+
+.technologies,
+.about,
+.sharks-section,
+.deployment-section {
+    padding: 70px 18px;
+}
+
+.section-title h2,
+.about h2 {
+    font-size: 32px;
+}
+
+.terminal-body {
+    padding: 20px;
+
+    font-size: 12px;
+}
+
+.shark-hero-content {
+    padding: 65px 18px;
+}
+
+.shark-hero h1 {
+    font-size: 45px;
+}
+
+.deployment-box {
+    padding: 25px;
+}
+
+.deployment-box h2 {
+    font-size: 29px;
+}
+
+.pipeline {
+    flex-direction: column;
+}
+
+.pipeline-arrow {
+    transform: rotate(90deg);
+}
+```
+
 }

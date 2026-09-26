@@ -1,9 +1,11 @@
+
 name: Build and Deploy NodeJS App on AWS
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
   id-token: write
@@ -11,46 +13,95 @@ permissions:
 
 env:
   AWS_REGION: us-east-1
+  AWS_ACCOUNT_ID: "254771353010"
   ECR_REPOSITORY: ci-cd-pipeline
   ECS_CLUSTER: ci-cd-cluster
   ECS_SERVICE: ci-cd-service
+  ECS_TASK_FAMILY: ci-cd-task
+  ECS_CONTAINER: ci-cd-container
 
 jobs:
-  Build-App:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout source code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
-      - name: Configure AWS Credentials
+      - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::254771353010:role/GitHubActionsECSDeployRole
           aws-region: ${{ env.AWS_REGION }}
 
+      - name: Verify AWS identity
+        run: aws sts get-caller-identity
+
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Build Docker Image
+      - name: Build and push Docker image
+        id: build
         run: |
-          docker build \
-            -t 254771353010.dkr.ecr.us-east-1.amazonaws.com/ci-cd-pipeline:latest .
+          IMAGE_URI="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:$GITHUB_SHA"
 
-      - name: Push Docker Image to ECR
+          docker build -t "$IMAGE_URI" .
+          docker push "$IMAGE_URI"
+
+          echo "image=$IMAGE_URI" >> "$GITHUB_OUTPUT"
+
+      - name: Create new ECS task definition revision
+        id: task
+        env:
+          IMAGE_URI: ${{ steps.build.outputs.image }}
         run: |
-          docker push \
-            254771353010.dkr.ecr.us-east-1.amazonaws.com/ci-cd-pipeline:latest
+          aws ecs describe-task-definition \
+            --task-definition "$ECS_TASK_FAMILY" \
+            --query taskDefinition \
+            --output json > task-definition.json
 
-      - name: Deploy Updated Image to ECS
+          jq --arg IMAGE "$IMAGE_URI" \
+             --arg CONTAINER "$ECS_CONTAINER" \
+            '
+            .containerDefinitions |= map(
+              if .name == $CONTAINER
+              then .image = $IMAGE
+              else .
+              end
+            )
+            | del(
+                .taskDefinitionArn,
+                .revision,
+                .status,
+                .requiresAttributes,
+                .compatibilities,
+                .registeredAt,
+                .registeredBy,
+                .deregisteredAt
+              )
+            ' task-definition.json > new-task-definition.json
+
+          TASK_ARN=$(aws ecs register-task-definition \
+            --cli-input-json file://new-task-definition.json \
+            --query 'taskDefinition.taskDefinitionArn' \
+            --output text)
+
+          echo "task_arn=$TASK_ARN" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy new task definition to ECS
+        env:
+          TASK_ARN: ${{ steps.task.outputs.task_arn }}
         run: |
           aws ecs update-service \
             --cluster "$ECS_CLUSTER" \
             --service "$ECS_SERVICE" \
-            --force-new-deployment
+            --task-definition "$TASK_ARN"
 
-      - name: Wait for ECS Service Stability
+      - name: Wait for ECS service stability
         run: |
           aws ecs wait services-stable \
             --cluster "$ECS_CLUSTER" \
             --services "$ECS_SERVICE"
+
+      - name: Deployment completed
+        run: echo "ECS deployment completed successfully!"
